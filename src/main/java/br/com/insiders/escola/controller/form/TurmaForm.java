@@ -20,22 +20,18 @@ public class TurmaForm {
     @Min(1)
     private int quantidadeAluno;
 
-
     private Year anoLetivo;
 
 
     public Turma converter() {
         Turma turma = Turma.builder()
-                .nome(nome)
-                .anoLetivo(anoLetivo)
-                .quantidadeAluno(quantidadeAluno)
-                .build();
+            .nome(nome)
+            .anoLetivo(anoLetivo)
+            .quantidadeAluno(quantidadeAluno)
+            .build();
         return turma;
     }
 
 
-//    public Turma converter() {
-//        return new Turma(nome,quantidadeAluno,anoLetivo);
-//    }
 
 }

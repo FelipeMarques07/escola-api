@@ -20,22 +20,20 @@ import static org.mockito.Mockito.when;
 public class MentoriaServiceTest {
 
     @Mock
-    MentorService mentorService;
+    private MentorService mentorService;
 
     @InjectMocks
-    MentoriaService mentoriaService;
+    private MentoriaService mentoriaService;
+
+    private Turma turma = Turma.builder().id(1l).nome("Turma 2021 1 semestre").quantidadeAluno(40).anoLetivo(Year.now()).build();
+    private Aluno aluno = Aluno.builder().id(1l).nome("Felipe").sobrenome("Marques").matricula(321123).turma(turma).build();
+    private Mentor mentor = Mentor.builder().id(1l).nome("Mauricio").sobrenome("Silva").matricula(321123).build();
 
     @Test
     public void listarMentoriaTest() {
 
-        Turma turma = Turma.builder().id(1l).nome("Turma 2021 1 semestre").quantidadeAluno(40).anoLetivo(Year.now()).build();
-        Aluno aluno = Aluno.builder().id(1l).nome("Felipe").sobrenome("Marques").matricula(321123).turma(turma).build();
-
         List<Aluno> alunos = new ArrayList<>();
         alunos.add(aluno);
-
-        Mentor mentor = new Mentor(1l, "Mauricio", "Silva", 321123, alunos);
-
         List<Mentor> mentores = new ArrayList<>();
         mentores.add(mentor);
 

@@ -1,14 +1,14 @@
 package br.com.insiders.escola.model;
 
 import jdk.jfr.Enabled;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Value;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 @Builder
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "aluno")
 public class Aluno {

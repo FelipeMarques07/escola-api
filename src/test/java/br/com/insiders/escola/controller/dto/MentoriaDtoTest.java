@@ -22,7 +22,7 @@ public class MentoriaDtoTest {
         Aluno aluno = Aluno.builder().id(1l).nome("Felipe").sobrenome("Marques").matricula(321123).turma(turma).build();
         List<Aluno> alunos = new ArrayList<>();
         alunos.add(aluno);
-        Mentor mentor = new Mentor(1l, "Mauricio", "Silva", 321123,alunos);
+        Mentor mentor = Mentor.builder().id(1l).nome("Mauricio").sobrenome("Silva").matricula(321123).build();
         MentoriaDto mentorDto = new MentoriaDto(mentor);
         Assertions.assertEquals(1, mentorDto.getId());
         Assertions.assertEquals(mentor.getNome(), mentorDto.getNome());

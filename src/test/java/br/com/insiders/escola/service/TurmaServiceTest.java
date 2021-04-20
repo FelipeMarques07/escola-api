@@ -29,12 +29,12 @@ import static org.mockito.Mockito.when;
 public class TurmaServiceTest {
 
     @Mock
-    TurmaRepository turmaRepository;
+    private TurmaRepository turmaRepository;
 
     @InjectMocks
-    TurmaService turmaService;
+    private TurmaService turmaService;
 
-    Turma turma = Turma.builder().id(1l).nome("Turma 2021 1 semestre").quantidadeAluno(40).anoLetivo(Year.now()).build();
+    private Turma turma = Turma.builder().id(1l).nome("Turma 2021 1 semestre").quantidadeAluno(40).anoLetivo(Year.now()).build();
 
     @Test
     public void buscarTurmaTest() {

@@ -25,16 +25,15 @@ import static org.mockito.Mockito.when;
 public class MentorServiceTest {
 
     @Mock
-    MentorRepository mentorRepository;
+    private MentorRepository mentorRepository;
 
     @InjectMocks
-    MentorService mentorService;
+    private MentorService mentorService;
 
     private Mentor mentor = Mentor.builder().id(1l).nome("Mauricio").sobrenome("Silva").matricula(321123).build();
 
     @Test
     public void buscarMentorTest() {
-
 
         when(mentorRepository.findById(1)).thenReturn(mentor);
         var getMentorResponse = mentorService.findById(1);
