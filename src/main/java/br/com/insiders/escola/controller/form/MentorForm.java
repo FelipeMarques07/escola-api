@@ -26,6 +26,11 @@ public class MentorForm {
 
 
     public Mentor converter() {
-        return new Mentor(nome,sobrenome,matricula);
+        Mentor mentor = Mentor.builder()
+            .nome(nome)
+            .sobrenome(sobrenome)
+            .matricula(matricula)
+            .build();
+        return mentor;
     }
 }

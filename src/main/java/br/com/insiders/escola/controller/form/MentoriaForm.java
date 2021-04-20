@@ -19,7 +19,11 @@ public class MentoriaForm {
 
 
     public Mentor converter() {
-        return new Mentor(id,alunos);
+        Mentor mentor = Mentor.builder()
+            .id(id)
+            .alunos(alunos)
+            .build();
+        return mentor;
     }
 
 }

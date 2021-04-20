@@ -17,8 +17,7 @@ public class MentorDtoTest {
 
     @Test
     public void mentorDtoTest() {
-
-        Mentor mentor = new Mentor(1l, "Mauricio", "Silva", 321123);
+        Mentor mentor = Mentor.builder().id(1l).nome("Mauricio").sobrenome("Silva").matricula(321123).build();
         MentorDto mentorDto = new MentorDto(mentor);
         Assertions.assertEquals(1, mentorDto.getId());
         Assertions.assertEquals(mentor.getNome(), mentorDto.getNome());
