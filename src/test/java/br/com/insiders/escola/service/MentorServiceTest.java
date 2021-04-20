@@ -30,7 +30,7 @@ public class MentorServiceTest {
     @InjectMocks
     MentorService mentorService;
 
-    Mentor mentor = new Mentor(1l, "Mauricio", "Silva", 321123);
+    private Mentor mentor = Mentor.builder().id(1l).nome("Mauricio").sobrenome("Silva").matricula(321123).build();
 
     @Test
     public void buscarMentorTest() {
