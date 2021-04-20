@@ -28,6 +28,12 @@ public class AlunoForm {
 
     public Aluno converter(TurmaService turmaService) {
         Turma turma = turmaService.findById(getTurma().getId());
-        return new Aluno(nome, sobrenome, matricula, turma);
+        Aluno aluno = Aluno.builder()
+                .nome(nome)
+                .sobrenome(sobrenome)
+                .matricula(matricula)
+                .turma(turma)
+                .build();
+        return aluno;
     }
 }

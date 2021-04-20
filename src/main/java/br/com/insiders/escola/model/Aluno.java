@@ -1,11 +1,14 @@
 package br.com.insiders.escola.model;
 
 import jdk.jfr.Enabled;
+import lombok.Builder;
 import lombok.Data;
+import lombok.Value;
 
 import javax.persistence.*;
 import java.util.List;
-@Data
+@Builder
+@Value
 @Entity
 @Table(name = "aluno")
 public class Aluno {
@@ -27,22 +30,5 @@ public class Aluno {
     @ManyToOne
     private Turma turma;
 
-    public Aluno() {
-    }
 
-    public Aluno(Long id, String nome, String sobrenome, int matricula, Turma turma) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.matricula = matricula;
-        this.turma = turma;
-
-    }
-
-    public Aluno(String nome, String sobrenome, int matricula, Turma turma) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.matricula = matricula;
-        this.turma = turma;
-    }
 }

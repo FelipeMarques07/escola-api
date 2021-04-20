@@ -15,7 +15,7 @@ public class AlunoDtoTest {
     public void alunoDtoTest(){
 
         Turma turma = Turma.builder().id(1l).nome("Turma 2021 1 semestre").quantidadeAluno(40).anoLetivo(Year.now()).build();
-        Aluno aluno = new Aluno(1l,"Felipe","Marques",321123,turma);
+        Aluno aluno = Aluno.builder().id(1l).nome("Felipe").sobrenome("Marques").matricula(321123).turma(turma).build();
         AlunoDto alunoDto = new AlunoDto(aluno);
         Assertions.assertEquals(aluno.getId(),alunoDto.getId());
         Assertions.assertEquals(aluno.getNome(),alunoDto.getNome());
