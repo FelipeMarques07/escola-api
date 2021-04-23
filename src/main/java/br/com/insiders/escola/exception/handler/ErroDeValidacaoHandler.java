@@ -1,5 +1,6 @@
-package br.com.insiders.escola.config;
+package br.com.insiders.escola.exception.handler;
 
+import br.com.insiders.escola.exception.dto.ErroDeFormularioDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

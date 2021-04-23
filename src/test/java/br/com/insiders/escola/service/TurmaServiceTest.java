@@ -39,7 +39,7 @@ public class TurmaServiceTest {
     @Test
     public void buscarTurmaTest() {
 
-        when(turmaRepository.findById(1)).thenReturn(turma);
+        when(turmaRepository.findById(1l)).thenReturn(java.util.Optional.ofNullable(turma));
         var getTurmaResponse = turmaService.findById(1);
         Assertions.assertEquals(turma.getId(),getTurmaResponse.getId());
         Assertions.assertEquals(turma.getNome(),getTurmaResponse.getNome());

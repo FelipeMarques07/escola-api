@@ -35,13 +35,12 @@ public class MentorServiceTest {
     @Test
     public void buscarMentorTest() {
 
-        when(mentorRepository.findById(1)).thenReturn(mentor);
+        when(mentorRepository.findById(1l)).thenReturn(java.util.Optional.ofNullable(mentor));
         var getMentorResponse = mentorService.findById(1);
         Assertions.assertEquals(mentor.getId(), getMentorResponse.getId());
         Assertions.assertEquals(mentor.getNome(), getMentorResponse.getNome());
         Assertions.assertEquals(mentor.getSobrenome(), getMentorResponse.getSobrenome());
         Assertions.assertEquals(mentor.getMatricula(), getMentorResponse.getMatricula());
-
 
     }
 
@@ -53,7 +52,6 @@ public class MentorServiceTest {
         when(mentorRepository.findAll()).thenReturn(mentores);
         var getMentoresResponse = mentorService.findAll();
         Assertions.assertEquals(mentores, getMentoresResponse);
-
 
     }
 

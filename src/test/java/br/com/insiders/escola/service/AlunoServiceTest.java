@@ -34,7 +34,7 @@ public class AlunoServiceTest {
     @Test
     public void buscarAlunoTest(){
 
-        when(alunoRepository.findById(1)).thenReturn(aluno);
+        when(alunoRepository.findById(1l)).thenReturn(java.util.Optional.ofNullable(aluno));
         var getAlunoResponse = alunoService.findById(1);
         Assertions.assertEquals(aluno.getId(),getAlunoResponse.getId());
         Assertions.assertEquals(aluno.getNome(),getAlunoResponse.getNome());

@@ -1,14 +1,13 @@
 package br.com.insiders.escola.service;
 
 
+import br.com.insiders.escola.exception.LimiteDeAlunoPorTurma;
 import br.com.insiders.escola.model.Aluno;
 import br.com.insiders.escola.model.Mentor;
-import br.com.insiders.escola.repository.MentorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MentoriaService {
@@ -31,7 +30,7 @@ public class MentoriaService {
                 .count();
 
         if(alunoPorTurma >= 3){
-            throw new RuntimeException("Não foi possivel, pois esse mentor já possui 3 alunos dessa turma");
+            throw new LimiteDeAlunoPorTurma("Não foi possivel, pois esse mentor já possui 3 alunos dessa turma");
         }
         mentor.getAlunos().add(alunoTmp);
         return mentor;

@@ -7,9 +7,5 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class TurmaRepositoryTest {
 
-    @Test
-    public void findByIdTest(){
 
-
-    }
 }

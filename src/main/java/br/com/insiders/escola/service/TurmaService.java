@@ -1,5 +1,6 @@
 package br.com.insiders.escola.service;
 
+import br.com.insiders.escola.exception.ObjetoNaoEncontrado;
 import br.com.insiders.escola.model.Turma;
 import br.com.insiders.escola.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,8 @@ public class TurmaService {
     }
 
     public Turma findById(long id){
-        return turmaRepository.findById(id);
+        return turmaRepository.findById(id).orElseThrow(
+                () -> new ObjetoNaoEncontrado("Id não encontrado "+ id));
     }
 
     public void delete(long id){
