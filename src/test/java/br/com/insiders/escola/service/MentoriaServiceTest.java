@@ -1,5 +1,7 @@
 package br.com.insiders.escola.service;
 
+import br.com.insiders.escola.exception.LimiteDeAlunoPorTurma;
+import br.com.insiders.escola.exception.ObjetoNaoEncontrado;
 import br.com.insiders.escola.model.Aluno;
 import br.com.insiders.escola.model.Mentor;
 import br.com.insiders.escola.model.Turma;
@@ -34,17 +36,17 @@ public class MentoriaServiceTest {
 
     @InjectMocks
     private MentorService mentorServiceTmp;
-
     private Turma turma = Turma.builder().id(1l).nome("Turma 2021 1 semestre").quantidadeAluno(40).anoLetivo(Year.now()).build();
     private Aluno aluno1 = Aluno.builder().id(1l).nome("Felipe").sobrenome("Marques").matricula(321123).turma(turma).build();
     private Aluno aluno2 = Aluno.builder().id(2l).nome("José").sobrenome("Silva").matricula(321122).turma(turma).build();
+    private Aluno aluno3 = Aluno.builder().id(3l).nome("Claudio").sobrenome("Motta").matricula(321121).turma(turma).build();
+    private Aluno aluno4 = Aluno.builder().id(4l).nome("Roberto").sobrenome("Santos").matricula(321124).turma(turma).build();
     private Mentor mentor = Mentor.builder().id(1l).nome("Mauricio").sobrenome("Silva").matricula(321123).build();
     private List<Aluno> alunos = new ArrayList<>();
     private List<Mentor> mentores = new ArrayList<>();
 
     @Test
     public void listarMentoriaTest() {
-
         alunos.add(aluno1);
         mentor.setAlunos(alunos);
         mentores.add(mentor);
@@ -55,7 +57,6 @@ public class MentoriaServiceTest {
     }
     @Test
     public void saveMentoriaTest() {
-
         alunos.add(aluno1);
         mentor.setAlunos(alunos);
         when(mentorRepository.findById(1l)).thenReturn(java.util.Optional.ofNullable(mentor));
@@ -73,5 +74,16 @@ public class MentoriaServiceTest {
         mentor.setAlunos(alunos);
         Mentor mentorTmp  = mentoriaService.verificarQuantidadeAlunosMentorTurma(aluno2, mentor);
         Assertions.assertEquals(mentor, mentorTmp);
+    }
+
+    @Test
+    public void verificarQuantidadeAlunosMentorTurmaExceptionTest() {
+        alunos.add(aluno1);
+        alunos.add(aluno2);
+        alunos.add(aluno3);
+        mentor.setAlunos(alunos);
+        Assertions.assertThrows(LimiteDeAlunoPorTurma.class, () -> {
+            mentoriaService.verificarQuantidadeAlunosMentorTurma(aluno4,mentor);
+        });
     }
 }

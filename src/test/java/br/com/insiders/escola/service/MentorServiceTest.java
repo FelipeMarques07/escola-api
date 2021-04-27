@@ -1,5 +1,6 @@
 package br.com.insiders.escola.service;
 
+import br.com.insiders.escola.exception.ObjetoNaoEncontrado;
 import br.com.insiders.escola.model.Aluno;
 import br.com.insiders.escola.model.Mentor;
 import br.com.insiders.escola.model.Turma;
@@ -34,7 +35,6 @@ public class MentorServiceTest {
 
     @Test
     public void buscarMentorTest() {
-
         when(mentorRepository.findById(1l)).thenReturn(java.util.Optional.ofNullable(mentor));
         var getMentorResponse = mentorService.findById(1);
         Assertions.assertEquals(mentor.getId(), getMentorResponse.getId());
@@ -46,7 +46,6 @@ public class MentorServiceTest {
 
     @Test
     public void listarMentorTest() {
-
         List<Mentor> mentores = new ArrayList<>();
         mentores.add(mentor);
         when(mentorRepository.findAll()).thenReturn(mentores);
@@ -57,15 +56,21 @@ public class MentorServiceTest {
 
     @Test
     public void salvarMentorTest() {
-
         mentorService.save(mentor);
         verify(mentorRepository).save(Mockito.any());
     }
 
     @Test
     public void deletarMentorTest() {
-
         mentorService.delete(1);
         verify(mentorRepository).deleteById(Mockito.any());
     }
+
+    @Test
+    public void buscarAlunoExceptionTest() {
+        Assertions.assertThrows(ObjetoNaoEncontrado.class, () -> {
+            mentorService.findById(100);
+        });
+    }
+
 }

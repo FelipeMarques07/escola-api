@@ -31,17 +31,11 @@ public class AlunoFormTest {
 
     @Test
     public void alunoFormTest() {
-
         when(turmaService.findById(1)).thenReturn(turma);
         Aluno aluno = alunoForm.converter(turmaService);
         Assertions.assertEquals(alunoForm.getNome(), aluno.getNome());
         Assertions.assertEquals(alunoForm.getSobrenome(), aluno.getSobrenome());
         Assertions.assertEquals(alunoForm.getMatricula(), aluno.getMatricula());
         Assertions.assertEquals(alunoForm.getTurma(), aluno.getTurma());
-    }
-
-    @Test
-    public void alunoFormErrorTest() {
-
     }
 }
