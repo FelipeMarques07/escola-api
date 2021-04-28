@@ -26,7 +26,6 @@ public class MentorFormTest {
 
     @Test
     public void mentorFormTest() {
-        
         Mentor mentor = mentorForm.converter();
         Assertions.assertEquals(mentorForm.getNome(), mentor.getNome());
         Assertions.assertEquals(mentorForm.getSobrenome(), mentor.getSobrenome());

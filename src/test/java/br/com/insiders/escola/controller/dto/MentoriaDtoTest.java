@@ -17,7 +17,6 @@ public class MentoriaDtoTest {
 
     @Test
     public void mentoriaDtoTest() {
-
         Turma turma = Turma.builder().id(1l).nome("Turma 2021 1 semestre").quantidadeAluno(40).anoLetivo(Year.now()).build();
         Aluno aluno = Aluno.builder().id(1l).nome("Felipe").sobrenome("Marques").matricula(321123).turma(turma).build();
         List<Aluno> alunos = new ArrayList<>();

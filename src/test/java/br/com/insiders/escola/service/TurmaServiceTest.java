@@ -1,5 +1,6 @@
 package br.com.insiders.escola.service;
 
+import br.com.insiders.escola.exception.ObjetoNaoEncontrado;
 import br.com.insiders.escola.model.Turma;
 import br.com.insiders.escola.repository.TurmaRepository;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -38,7 +39,6 @@ public class TurmaServiceTest {
 
     @Test
     public void buscarTurmaTest() {
-
         when(turmaRepository.findById(1l)).thenReturn(java.util.Optional.ofNullable(turma));
         var getTurmaResponse = turmaService.findById(1);
         Assertions.assertEquals(turma.getId(),getTurmaResponse.getId());
@@ -49,7 +49,6 @@ public class TurmaServiceTest {
     }
     @Test
     public void listarTurmaTest() {
-
         List<Turma> turmas = new ArrayList<>();
         turmas.add(turma);
         when(turmaRepository.findAll()).thenReturn(turmas);
@@ -70,6 +69,12 @@ public class TurmaServiceTest {
         verify(turmaRepository).deleteById(Mockito.any());
     }
 
+    @Test
+    public void buscarTurmaExceptionTest() {
+        Assertions.assertThrows(ObjetoNaoEncontrado.class, () -> {
+            turmaService.findById(100);
+        });
+    }
 }
 
 
